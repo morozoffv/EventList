@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "6ab82c97-a4f2-49f1-ac08-1136a33da8f0",
+		"name": "EventsList",
+		"description": "This API contains few endpoints to get events list, details for each item, and possibility to buy a ticket. Please pay attention to the request headers, it should contain \"secret\" value. Otherwise API will not work.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get list of events",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get eventId\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    let eventId = jsonData[0].guid",
+							"",
+							"    pm.globals.set(\"eventId\", eventId);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "secret",
+						"value": "c8242f09751a2a5e9968a5e66b9259ca2ede3d92b0742a0ecfcab6b45adbb16ac9ebb2ebd073f3bd17d09538d97582cf7ea7c1dbbb9e1e8bf80db7262dc0923c205a0f9e626c5e37bc4e4ae99fa2e18434679631a72a497b89385095ea1e68031f543644ca579bf4f1473c71ad5dce50581e125637c72406fe5bfb437843225a847e644e3026f68764127397e86fe4ccaf33836cbbe2f46d32061388b33d18bc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://technical-interview.excels.io/events",
+					"protocol": "https",
+					"host": [
+						"technical-interview",
+						"excels",
+						"io"
+					],
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Event details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "secret",
+						"value": "c8242f09751a2a5e9968a5e66b9259ca2ede3d92b0742a0ecfcab6b45adbb16ac9ebb2ebd073f3bd17d09538d97582cf7ea7c1dbbb9e1e8bf80db7262dc0923c205a0f9e626c5e37bc4e4ae99fa2e18434679631a72a497b89385095ea1e68031f543644ca579bf4f1473c71ad5dce50581e125637c72406fe5bfb437843225a847e644e3026f68764127397e86fe4ccaf33836cbbe2f46d32061388b33d18bc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://technical-interview.excels.io/event/{{eventId}}",
+					"protocol": "https",
+					"host": [
+						"technical-interview",
+						"excels",
+						"io"
+					],
+					"path": [
+						"event",
+						"{{eventId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buy ticket",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "secret",
+						"value": "c8242f09751a2a5e9968a5e66b9259ca2ede3d92b0742a0ecfcab6b45adbb16ac9ebb2ebd073f3bd17d09538d97582cf7ea7c1dbbb9e1e8bf80db7262dc0923c205a0f9e626c5e37bc4e4ae99fa2e18434679631a72a497b89385095ea1e68031f543644ca579bf4f1473c71ad5dce50581e125637c72406fe5bfb437843225a847e644e3026f68764127397e86fe4ccaf33836cbbe2f46d32061388b33d18bc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://technical-interview.excels.io/event/{{eventId}}/buy",
+					"protocol": "https",
+					"host": [
+						"technical-interview",
+						"excels",
+						"io"
+					],
+					"path": [
+						"event",
+						"{{eventId}}",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
